@@ -45,6 +45,16 @@ stages:
           inputs:
             version: 'v1.26.0'
             dir: '$(System.DefaultWorkingDirectory)'  
+
+      - job: Tflinit
+        displayName: Tflint
+        steps:
+          - task: PowerShell@2
+            displayName: TFLint
+            inputs:
+              targetType: 'inline'
+              script: 'tflint.exe --recursive'
+              workingDirectory: '$(System.DefaultWorkingDirectory)'
     
     
 
