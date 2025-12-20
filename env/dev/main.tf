@@ -71,3 +71,16 @@ locals {
     vm_config = local.vm_with_ids
    
  }
+
+ module "sql_server" {
+   depends_on = [ module.resource_group ]
+   source = "../../modules/azurerm_sql_server"
+   sql_server_config = var.sql_server_config
+ }
+
+ module "sql_db" {
+   depends_on = [ module.sql_server ]
+   source = "../../modules/azurerm_sql_database"
+   sql_db_config = var.sql_db_config
+   
+ }
