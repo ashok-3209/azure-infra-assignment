@@ -1,0 +1,17 @@
+name : azure-infra-build
+
+trigger: none
+
+pool: ADO_Agent
+
+stages:
+  - stage: InitValidatePlan
+    displayName: Init, Validate and Plan
+    jobs:
+      - job: 
+        displayName: Terrafom Init
+        steps:
+          - 
+    
+    
+
