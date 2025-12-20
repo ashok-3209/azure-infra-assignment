@@ -8,6 +8,7 @@ steps:
      inputs:
        provider: 'azurerm'
        command: 'init'
+       workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
        backendServiceArm: 'ado_azure_sp'
        backendAzureRmStorageAccountName: 'ashokstgpipeline01'
        backendAzureRmContainerName: 'devtfstate'
@@ -18,12 +19,14 @@ steps:
      inputs:
        provider: 'azurerm'
        command: 'validate'
+       workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
 
    - task: TerraformTask@5
      displayName: Terraform Plan
      inputs:
        provider: 'azurerm'
        command: 'plan'
+       workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
        environmentServiceNameAzureRM: 'ado_azure_sp'
 
 
