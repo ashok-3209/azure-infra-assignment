@@ -34,7 +34,7 @@ subnet_config = {
     address_prefixes    = ["10.0.1.0/24"]
   },
   "dev-subnet2" = {
-    subnet_name         = "baackend-subnet"
+    subnet_name         = "backend-subnet"
     resource_group_name = "dev-askrg01"
     vnet_name           = "dev-askvnet02"
     address_prefixes    = ["10.1.1.0/24"]
@@ -46,13 +46,13 @@ pip_config = {
     public_ip_name      = "frontend-askpip01"
     resource_group_name = "dev-askrg01"
     location            = "West US"
-    allocation_method   = "Dynamic"
+    allocation_method   = "Static"
   },
   "dev-pip2" = {
     public_ip_name      = "backend-askpip02"
     resource_group_name = "dev-askrg01"
     location            = "West US"
-    allocation_method   = "Dynamic"
+    allocation_method   = "Static"
   }
 }
 
