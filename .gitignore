@@ -1,0 +1,24 @@
+.terraform/
+# Local .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Crash log
+crash.log
+
+# Exclude tfvars files which often contain secrets
+# *.tfvars
+*.tfvars.json
+
+# Terraform override files
+override.tf
+override.tf.json
+*_override.tf
+
+# Lock file: recommended to commit to version control for shared projects.
+# If you prefer to ignore it, uncomment the next line.
+# .terraform.lock.hcl
+
+# Local CLI configuration files
+.terraformrc
+terraform.rc

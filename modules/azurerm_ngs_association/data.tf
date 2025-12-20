@@ -1,0 +1,1 @@
+// data lookups removed: nsg_association module now accepts nic_id and nsg_id directly
