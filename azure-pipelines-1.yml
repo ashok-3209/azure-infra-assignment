@@ -1,17 +1,50 @@
-name : azure-infra-build
-
 trigger: none
 
 pool: ADO_Agent
 
 stages:
-  - stage: InitValidatePlan
+  - stage: initValidatePlan
     displayName: Init, Validate and Plan
     jobs:
-      - job: 
-        displayName: Terrafom Init
+      - job: initValidatePlanJob
+        displayName: Init Validate Plan Job
         steps:
-          - 
+        - task: TerraformTask@5
+          displayName: Terraform Init
+          inputs:
+            provider: 'azurerm'
+            command: 'init'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            backendServiceArm: 'ado_azure_sp'
+            backendAzureRmStorageAccountName: 'ashokstgpipeline01'
+            backendAzureRmContainerName: 'devtfstate'
+            backendAzureRmKey: 'terraform.dev.tfstate'
+
+        - task: TerraformTask@5
+          displayName: Terraform Validate
+          inputs:
+            provider: 'azurerm'
+            command: 'validate'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+
+        - task: TerraformTask@5
+          displayName: Terraform Plan
+          inputs:
+            provider: 'azurerm'
+            command: 'plan'
+            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            environmentServiceNameAzureRM: 'ado_azure_sp'
+
+  - stage: TFSec
+    displayName: TFSec
+    jobs:
+      - job: 
+        displayName: Running TFSec
+        steps:
+        - task: tfsec@1
+          inputs:
+            version: 'v1.26.0'
+            dir: '$(System.DefaultWorkingDirectory)'  
     
     
 
