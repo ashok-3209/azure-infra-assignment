@@ -19,11 +19,11 @@ steps:
        provider: 'azurerm'
        command: 'validate'
 
-    - task: TerraformTask@5
-      displayName: Terraform plan
-      inputs:
-        provider: 'azurerm'
-        command: 'plan'
-        environmentServiceNameAzureRM: 'ado_azure_sp'
+   - task: TerraformTask@5
+     displayName: Terraform Plan
+     inputs:
+       provider: 'azurerm'
+       command: 'plan'
+       environmentServiceNameAzureRM: 'ado_azure_sp'
 
 
