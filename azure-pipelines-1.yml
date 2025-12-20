@@ -2,6 +2,9 @@ trigger: none
 
 pool: ADO_Agent
 
+variables:
+   work_dir: '$(System.DefaultWorkingDirectory)/env/dev'
+
 stages:
   - stage: initValidatePlan
     displayName: Init, Validate and Plan
@@ -14,7 +17,7 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'init'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            workingDirectory: '$(work_dir)'
             backendServiceArm: 'ado_azure_sp'
             backendAzureRmStorageAccountName: 'ashokstgpipeline01'
             backendAzureRmContainerName: 'devtfstate'
@@ -25,14 +28,14 @@ stages:
           inputs:
             provider: 'azurerm'
             command: 'validate'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            workingDirectory: '$(work_dir)'
 
         - task: TerraformTask@5
           displayName: Terraform Plan
           inputs:
             provider: 'azurerm'
             command: 'plan'
-            workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+            workingDirectory: '$(work_dir)'
             environmentServiceNameAzureRM: 'ado_azure_sp'
 
   - stage: SecurityScan
@@ -86,7 +89,7 @@ stages:
             inputs:
              provider: 'azurerm'
              command: 'init'
-             workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+             workingDirectory: '$(work_dir)'
              backendServiceArm: 'ado_azure_sp'
              backendAzureRmStorageAccountName: 'ashokstgpipeline01'
              backendAzureRmContainerName: 'devtfstate'
@@ -97,7 +100,7 @@ stages:
             inputs:
               provider: 'azurerm'
               command: 'apply'
-              workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
+              workingDirectory: '$(work_dir)'
               environmentServiceNameAzureRM: 'ado_azure_sp'       
     
     
