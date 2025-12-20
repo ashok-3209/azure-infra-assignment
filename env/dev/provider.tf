@@ -5,7 +5,15 @@ terraform {
       version = "4.57.0"
     }
   }
+  backend "azurerm" {
+    resource_group_name  = "ashok-rg-stg"
+    storage_account_name = "ashokstgpipeline01"
+    container_name       = "devtfstate"
+    key                  = "terraform.dev.tfstate"
+  }
 }
+
+
 
 provider "azurerm" {
   features {}
