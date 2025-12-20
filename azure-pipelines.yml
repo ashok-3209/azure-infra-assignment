@@ -1,0 +1,29 @@
+trigger: none
+
+pool: ADO_Agent
+
+steps: 
+   - task: TerraformTask@5
+     displayName: Terraform init
+     inputs:
+       provider: 'azurerm'
+       command: 'init'
+       backendServiceArm: 'ado_azure_sp'
+       backendAzureRmStorageAccountName: 'ashokstgpipeline01'
+       backendAzureRmContainerName: 'devtfstate'
+       backendAzureRmKey: 'terraform.dev.tfstate'
+
+   - task: TerraformTask@5
+     displayName: Terraform Validate
+     inputs:
+       provider: 'azurerm'
+       command: 'validate'
+
+    - task: TerraformTask@5
+      displayName: Terraform plan
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'ado_azure_sp'
+
+
