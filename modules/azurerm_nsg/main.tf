@@ -1,5 +1,5 @@
 
-resource "azurerm_network_security_group" "example" {
+resource "azurerm_network_security_group" "nsg" {
     for_each = var.nsg_config
   name                = each.value.nsg_name
   location            = each.value.location
@@ -7,7 +7,7 @@ resource "azurerm_network_security_group" "example" {
 
   security_rule {
     name                       = "allow_http"
-    priority                   = 100
+    priority                   = 101
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
