@@ -53,20 +53,20 @@ locals {
  }
 
  module "nsg" {
-    depends_on = [ module.resource_group ]
+    depends_on = [ module.resource_group, module.subnet ]
     source = "../../modules/azurerm_nsg"
     nsg_config = var.nsg_config
  }
 
  module "nsg_assoc" {
-    depends_on = [ module.nic, module.nsg ]
+    depends_on = [ module.nic, module.nsg , module.subnet ]
     source = "../../modules/azurerm_ngs_association"
     nsg_nic_config = local.nsg_assoc_with_ids
    
  }
 
  module "vm" {
-    depends_on = [ module.nic, module.nsg ]
+    depends_on = [ module.nic, module.nsg , module.subnet , module.resource_group, module.vnet]
     source = "../../modules/azurerm_virtual_machine"
     vm_config = local.vm_with_ids
    
