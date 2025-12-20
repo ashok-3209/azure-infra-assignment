@@ -35,8 +35,8 @@ stages:
             workingDirectory: '$(System.DefaultWorkingDirectory)/env/dev'
             environmentServiceNameAzureRM: 'ado_azure_sp'
 
-  - stage: TFSec
-    displayName: TFSec
+  - stage: SecurityScan
+    displayName: TFSec&TFLint
     jobs:
       - job: 
         displayName: Running TFSec
@@ -50,7 +50,7 @@ stages:
         displayName: Tflint
         steps:
           - task: PowerShell@2
-            displayName: TFLint
+            displayName: Running TFLint
             inputs:
               targetType: 'inline'
               script: 'tflint.exe --recursive'
