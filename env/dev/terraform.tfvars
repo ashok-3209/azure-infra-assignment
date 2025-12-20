@@ -1,3 +1,5 @@
+## Terraform tfvars input for dev environment
+
 rg_config = {
   "dev-rg1" = {
     resource_group_name = "dev-askrg01"
