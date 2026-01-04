@@ -5,10 +5,10 @@ rg_config = {
     resource_group_name = "dev-askrg01"
     location            = "centralindia"
   },
-  "dev-rg2" = {
-    resource_group_name = "test-askrg02"
-    location            = "centralindia"
-  }
+  # "dev-rg2" = {
+  #   resource_group_name = "test-askrg02"
+  #   location            = "centralindia"
+  # }
 }
 
 vnet_config = {
@@ -48,12 +48,12 @@ pip_config = {
     location            = "centralindia"
     allocation_method   = "Static"
   },
-  "dev-pip2" = {
-    public_ip_name      = "backend-askpip02"
-    resource_group_name = "dev-askrg01"
-    location            = "centralindia"
-    allocation_method   = "Static"
-  }
+  # "dev-pip2" = {
+  #   public_ip_name      = "backend-askpip02"
+  #   resource_group_name = "dev-askrg01"
+  #   location            = "centralindia"
+  #   allocation_method   = "Static"
+  # }
 }
 
 nic_config = {
@@ -66,15 +66,15 @@ nic_config = {
     private_ip_allocation = "Dynamic"
     public_ip_name        = "frontend-askpip01"
   },
-  "dev-nic2" = {
-    nic_name              = "backend-asknic02"
-    resource_group_name   = "dev-askrg01"
-    location              = "centralindia"
-    subnet_key            = "dev-subnet2"
-    pip_key               = "dev-pip2"
-    private_ip_allocation = "Dynamic"
-    public_ip_name        = "backend-askpip02"
-  }
+  # "dev-nic2" = {
+  #   nic_name              = "backend-asknic02"
+  #   resource_group_name   = "dev-askrg01"
+  #   location              = "centralindia"
+  #   subnet_key            = "dev-subnet2"
+  #   pip_key               = "dev-pip2"
+  #   private_ip_allocation = "Dynamic"
+  #   public_ip_name        = "backend-askpip02"
+  # }
 }
 
 nsg_config = {
@@ -83,11 +83,11 @@ nsg_config = {
     resource_group_name = "dev-askrg01"
     location            = "centralindia"
   },
-  "dev-nsg2" = {
-    nsg_name            = "backend-asknsg02"
-    resource_group_name = "dev-askrg01"
-    location            = "centralindia"
-  }
+  # "dev-nsg2" = {
+  #   nsg_name            = "backend-asknsg02"
+  #   resource_group_name = "dev-askrg01"
+  #   location            = "centralindia"
+  # }
 }
 
 nsg_nic_config = {
@@ -118,22 +118,22 @@ vm_config = {
       version   = "latest"
     }
   },
-  "dev-vm2" = {
-    vm_name             = "backend-askvm02"
-    resource_group_name = "dev-askrg01"
-    location            = "centralindia"
-    nic_key             = "dev-nic2"
-    vm_size             = "Standard_B1s"
-    admin_username      = "azureuser"
-    admin_password      = "P@ssword@1234"
-    os_disk_type        = "Standard_LRS"
-    source_image_reference = {
-      publisher = "Canonical"
-      offer     = "UbuntuServer"
-      sku       = "18.04-LTS"
-      version   = "latest"
-    }
-  }
+  # "dev-vm2" = {
+  #   vm_name             = "backend-askvm02"
+  #   resource_group_name = "dev-askrg01"
+  #   location            = "centralindia"
+  #   nic_key             = "dev-nic2"
+  #   vm_size             = "Standard_B1s"
+  #   admin_username      = "azureuser"
+  #   admin_password      = "P@ssword@1234"
+  #   os_disk_type        = "Standard_LRS"
+  #   source_image_reference = {
+  #     publisher = "Canonical"
+  #     offer     = "UbuntuServer"
+  #     sku       = "18.04-LTS"
+  #     version   = "latest"
+  #   }
+  # }
 }
 
 sql_server_config = {
