@@ -1,4 +1,4 @@
-## Terraform tfvars input for dev environment###
+## Terraform tfvars input for dev environment for 1 Dev VM###
 ###
 rg_config = {
   "dev-rg1" = {
